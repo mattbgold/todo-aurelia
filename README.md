@@ -1,6 +1,6 @@
 # todo-aurelia
 
-This is essentially a combination of the Todo-MVC template and Aurelia starter kit
+This is essentially a combination of the [Todo-MVC template](https://github.com/tastejs/todomvc-app-template) and the [ES2016 Aurelia starter kit](https://github.com/aurelia/beginner-kits/tree/master/kit-es2016)
 
 install Node and jspm
 
