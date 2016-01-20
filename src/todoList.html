@@ -2,7 +2,7 @@
     <require from='./item.html'></require>
         <header class="header">
             <h1>todos</h1>
-            <form role="form" submit.delegate="appendItem()">
+            <form role="form" submit.trigger="appendItem()">
                 <input class="new-todo" placeholder="What needs to be done?" autofocus value.bind="newTask">
             </form>
         </header>

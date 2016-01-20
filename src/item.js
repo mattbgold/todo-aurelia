@@ -20,7 +20,7 @@ export class Item {
 
     save() {
         if (this.taskBuffer.trim()) {
-            this.task = this.taskBuffer;
+            this.task = this.taskBuffer.trim();
         } else {
             this.delete();
         }
