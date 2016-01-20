@@ -1,0 +1,37 @@
+﻿<template>
+    <require from='./item.html'></require>
+        <header class="header">
+            <h1>todos</h1>
+            <form role="form" submit.delegate="appendItem()">
+                <input class="new-todo" placeholder="What needs to be done?" autofocus value.bind="newTask">
+            </form>
+        </header>
+        <!-- This section should be hidden by default and shown when there are todos -->
+        <section class="main" if.bind="isItemsPopulated">
+            <input class="toggle-all" type="checkbox" checked.bind="allItemsComplete" >
+            <label for="toggle-all">Mark all as complete</label>
+            <ul class="todo-list">
+                <li repeat.for="item of filteredItems" class="${item.isComplete ? 'completed' : ''} ${item.isEditing ? 'editing' : ''}">
+                    <item item.bind="item"></item>
+                </li>
+            </ul>
+        </section>        
+        <footer class="footer" if.bind="isItemsPopulated">
+            <!-- This should be `0 items left` by default -->
+            <span class="todo-count"><strong>${activeItems.length}</strong> item${activeItems.length === 1 ? '' : 's'} left</span>
+            <!-- Remove this if you don't implement routing -->
+            <ul class="filters">
+                <li>
+                    <a class="${filter === 'all' ? 'selected' : ''}" href="#/">All</a>
+                </li>
+                <li>
+                    <a class="${filter === 'active' ? 'selected' : ''}" href="#/active">Active</a>
+                </li>
+                <li>
+                    <a class="${filter === 'completed' ? 'selected' : ''}" href="#/completed">Completed</a>
+                </li>
+            </ul>
+            <!-- Hidden if no completed items are left ↓ -->
+            <button class="clear-completed" show.bind="completedItems.length" click.trigger="clearCompletedItems()">Clear completed</button>
+        </footer>
+</template>
