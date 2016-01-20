@@ -4,7 +4,6 @@
         <label>${item.task}</label>
         <button class="destroy" click.trigger="item.delete()"></button>
     </div>
-    <form role="form" submit.delegate="item.save()" show.bind="item.isEditing">
-        <input class="edit" value.bind="item.taskBuffer" focus.bind="item.isEditing" keyup.delegate="item.handleEscape($event)">
-    </form>
+    
+    <input class="edit" show.bind="item.isEditing" value.bind="item.taskBuffer" focus.bind="item.isEditing" keyup.delegate="item.handleKeyup($event)">
 </template>

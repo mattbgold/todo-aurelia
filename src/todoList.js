@@ -6,8 +6,7 @@ export class TodoList {
     }
     filter = 'all';
     items = [];
-    newTask =
-    '';
+    newTask = '';
     appendItem() {
         if (this.newTask.trim()) {
             this.items.push(new Item(this.newTask, this.deleteItem));

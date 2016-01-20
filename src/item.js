@@ -1,11 +1,9 @@
-export class Item {    
-    
+export class Item {        
     constructor(initTask, deleteCallback) {
         this.task = initTask;
         this.taskBuffer = initTask;
 
         this.deleteCallback = deleteCallback;
-
     }
 
     taskBuffer = '';
@@ -33,8 +31,13 @@ export class Item {
         this.deleteCallback(this);
     }
 
-    handleEscape(event) {
-        if (event.keyCode === 27) {
+    handleKeyup(event) {
+        let enter = 13;
+        let escape = 27;
+        if (event.keyCode === enter) {
+            this.save();
+        }
+        else if (event.keyCode === escape) {
             this.taskBuffer = this.task;
             this.isEditing = false;
         }
