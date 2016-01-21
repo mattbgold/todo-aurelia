@@ -42,7 +42,7 @@ export class TodoList {
     //methods
     appendItem() {
         if (this.newTask.trim()) {
-            this.items.push(new Item(this.newTask, false));
+            this.items.push(new Item(this.newTask.trim(), false));
         }
         this.newTask = '';
         this.save();
