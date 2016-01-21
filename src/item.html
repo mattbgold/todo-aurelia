@@ -1,9 +1,0 @@
-﻿<template bindable="item">
-    <div class="view" dblclick.trigger="item.edit()" show.bind="!item.isEditing">
-        <input class="toggle" type="checkbox" checked.bind="item.isComplete">
-        <label>${item.task}</label>
-        <button class="destroy" click.trigger="item.delete()"></button>
-    </div>
-    
-    <input class="edit" show.bind="item.isEditing" value.bind="item.taskBuffer" blur.trigger="item.save()" focus.bind="item.isEditing" keyup.delegate="item.handleKeyup($event)">
-</template>

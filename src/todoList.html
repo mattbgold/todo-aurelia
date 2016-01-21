@@ -1,5 +1,4 @@
 ﻿<template>
-    <require from='./item.html'></require>
         <header class="header">
             <h1>todos</h1>
             <form role="form" submit.trigger="appendItem()">
@@ -12,7 +11,13 @@
             <label for="toggle-all">Mark all as complete</label>
             <ul class="todo-list">
                 <li repeat.for="item of filteredItems" class="${item.isComplete ? 'completed' : ''} ${item.isEditing ? 'editing' : ''}">
-                    <item item.bind="item"></item>
+                    <div class="view" dblclick.trigger="item.editTask()" show.bind="!item.isEditing">
+                        <input class="toggle" type="checkbox" change.trigger="save() & debounce:500" checked.bind="item.isComplete">
+                        <label>${item.task}</label>
+                        <button class="destroy" click.trigger="deleteItem(item)"></button>
+                    </div>
+
+                    <input class="edit" show.bind="item.isEditing" value.bind="item.taskBuffer" blur.trigger="saveItem(item)" focus.bind="item.isEditing" keyup.delegate="handleKeyup($event, item)">
                 </li>
             </ul>
         </section>        

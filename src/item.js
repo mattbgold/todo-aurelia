@@ -1,9 +1,8 @@
 export class Item {        
-    constructor(initTask, deleteCallback) {
+    constructor(initTask, isComplete) {
         this.task = initTask;
         this.taskBuffer = initTask;
-
-        this.deleteCallback = deleteCallback;
+        this.isComplete = isComplete;
     }
 
     taskBuffer = '';
@@ -11,35 +10,7 @@ export class Item {
     isEditing = false;
     isComplete = false;
 
-    deleteCallback = null;
-    
-
-    edit() {
+    editTask() {
         this.isEditing = true;
-    }
-
-    save() {
-        if (this.taskBuffer.trim()) {
-            this.task = this.taskBuffer.trim();
-        } else {
-            this.delete();
-        }
-        this.isEditing = false;
-    }
-
-    delete() {
-        this.deleteCallback(this);
-    }
-
-    handleKeyup(event) {
-        let enter = 13;
-        let escape = 27;
-        if (event.keyCode === enter) {
-            this.save();
-        }
-        else if (event.keyCode === escape) {
-            this.taskBuffer = this.task;
-            this.isEditing = false;
-        }
     }
 }
